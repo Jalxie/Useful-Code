@@ -20,25 +20,28 @@ print('\n')
 sheet = wb.get_sheet_by_name(sheetname)
 
 #print all the column name
-for i in range(1, sheet.max_column):
-     print(i, sheet.cell(row=1, column=i).value)
+# for i in range(1, 5120):
+#      print(i, sheet.cell(row=i, column=1).value)
 
-for i in range(2, sheet.max_row):
-    if isinstance(sheet.cell(row=i, column=1).value,float):
-        xdata.append(sheet1.cell(row=i, column=1).value)
+for i in range(2, 5120):
+    xdata.append(sheet.cell(row=i, column=1).value)
 
-for i in range(1, sheet.max_column):
-     print(i, sheet.cell(row=1, column=i).value)
+# for i in range(1, 5120):
+#      print(i, sheet.cell(row=i, column=2).value)
 
-for i in range(2, sheet.max_row):
-    if isinstance(sheet.cell(row=i, column=1).value,float):
-        ydata.append(sheet1.cell(row=i, column=1).value)
-
+for i in range(2, 5120): 
+    # if sheet.cell(row=i, column=2).value > 0:
+    #     ydata.append(1000)
+    # else: 
+    #     ydata.append(0)
+    ydata.append(sheet.cell(row=i, column=2).value)
 """
 Plotting
 """
 plt.figure(1)
 
-plt.plot(xdata, ydata)
+plt.plot(xdata[0:1024*6:1], ydata[0:1024*6:1])
 
+plt.title("40Hz")
 
+plt.show()
